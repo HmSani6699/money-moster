@@ -1,0 +1,14 @@
+input {
+    padding: 9px;
+    border-radius: 10px;
+}
+
+h2:hover {
+    color: rgb(255, 0, 153);
+}
+
+#conteiner {
+    display: flex;
+    margin: auto;
+}
+

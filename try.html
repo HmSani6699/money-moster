@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+    <title>Money moster</title>
+    <style>
+        body {
+            background-color: navajowhite;
+        }
+
+        h3 {
+            text-align: center;
+            font-size: 30px;
+        }
+
+        p {
+            text-align: center;
+            color: green;
+        }
+
+        p input {
+
+            display: inline-flex;
+            padding: 8px;
+            border-radius: 10px;
+        }
+
+        .button {
+            display: flex;
+            justify-content: center;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 30px;
+            background-color: blue;
+            color: white;
+            font-size: 20px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Income</h3>
+    <p>Income: <input id="income-input"
+            type="text"></p>
+    <div>
+        <h3>Expenses</h3>
+        <div>
+            <p>Food: <input id="food-input"
+                    type="text"></p>
+        </div>
+        <div>
+            <p>Rent: <input id="rent-input"
+                    type="text"></p>
+        </div>
+        <div>
+            <p>Clothe: <input id="clothe-input"
+                    type="text"></p>
+        </div>
+        <div class="button">
+            <button
+                id="calculta">Calculta</button>
+        </div>
+
+        <h3>Total Expenses: $<span
+                id="allExpanses">0</span></h3>
+        <h3>Balance: $<span
+                id="allBalance-amount">0</span>
+        </h3>
+        <p>Save: <input id="seve-input"
+                type="text"> % <button
+                id="seve-btn">Save</button></p>
+        <h3>Saveng Amount:$<span
+                id="seveng-amount">0</span></h3>
+        <h3>Remaining Amount:$<span
+                id="remaninig-amount">0</span>
+        </h3>
+
+    </div>
+    <script>
+        //get total expenses input
+        function getInput(item) {
+            var food = document.getElementById(item + '-input');
+            var foodValue = food.value;
+            var num = parseInt(foodValue);
+            return num;
+        }
+
+        // get balnace
+        function getBalance(item) {
+            var getinput = document.getElementById(item + '-input');
+            var foodValue = getinput.value;
+            var num = parseInt(foodValue);
+            return num;
+        }
+
+        //get text 
+        function getText(item) {
+            var getText = document.getElementById(item + '-amount');
+            var getInnerText = getText.innerText;
+            var num = parseInt(getInnerText);
+            return num;
+        }
+        // get calculta button
+        document.getElementById('calculta').addEventListener('click', function () {
+            //get food amount
+            var food = getInput('food');
+            //get rent amonunt
+            var rent = getInput('rent');
+            //get clothe amount
+            var clothe = getInput('clothe');
+
+            //get total amount
+            var totalExpenses = food + rent + clothe;
+
+            //get total Expenses
+            document.getElementById('allExpanses').innerText = totalExpenses;
+
+            //get total Balance
+            var totalBalance = getBalance('income');
+
+            //get minus totalBalance an totalExpanses
+            var newBalance = totalBalance - totalExpenses;
+
+            //get balance
+            document.getElementById('allBalance-amount').innerText = newBalance;
+        });
+
+        document.getElementById('seve-btn').addEventListener('click', function () {
+            var totalBalance = getBalance('income');
+            var getdibag = totalBalance / 100;
+
+            var seveninig = getBalance('seve');
+            var newSaveninig = seveninig * getdibag;
+
+            //get seveninig amount
+            document.getElementById('seveng-amount').innerText = newSaveninig;
+
+            //get balance and seveninig function
+            //get balance
+            var balance = getText('allBalance');
+            //get saveninig amount
+            var seveninigAmount = getText('seveng');
+            //new Amount
+            var newAmount = balance - seveninigAmount;
+            //get remaining amount
+            document.getElementById('remaninig-amount').innerText = newAmount;
+
+        });
+
+    </script>
+</body>
+
+</html>
